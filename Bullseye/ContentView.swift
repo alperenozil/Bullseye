@@ -13,8 +13,10 @@ struct ContentView: View {
             Text("Welcome to my first iOS app!")
                 .foregroundColor(Color.purple)
                 .padding()
-            Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Hit me")/*@END_MENU_TOKEN@*/
+            Button(action: {
+                print("button pressed")
+            }) {
+                Text("I am a button")
             }
         }
     }
