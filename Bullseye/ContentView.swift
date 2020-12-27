@@ -4,10 +4,18 @@ struct ContentView: View {
     var body: some View {
         VStack {
             // Target row
-            Text("Welcome to my first iOS app!")
-                .foregroundColor(Color.purple)
-                .padding()
+            HStack {
+                Text("Put the bullseye as close as you can to:")
+                Text("100")
+            }
             // Slider row
+            HStack {
+                Text("1")
+                Slider(value: .constant(10))
+                Text("100")
+            }
+            
+            // Button row
             Button(action: {
                 print("button pressed")
                 self.alertIsVisible=true
@@ -18,11 +26,12 @@ struct ContentView: View {
                 ()->Alert
                 in return Alert(title: Text("Joke"), message: Text("Temel ucaktan atlamıs dunyayı tutturamamis"), dismissButton: .default(Text("Gapath")))
             }
+            // Score row
         }
     }
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().previewLayout(.fixed(width: 896.0, height: 414))
+        ContentView().previewLayout(.fixed(width: 896, height: 414))
     }
 }
