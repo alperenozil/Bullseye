@@ -1,6 +1,7 @@
 import SwiftUI
 struct ContentView: View {
     @State var alertIsVisible:Bool=false
+    @State var sliderValue: Double=50.0
     var body: some View {
         VStack {
             Spacer()
@@ -13,7 +14,7 @@ struct ContentView: View {
             // Slider row
             HStack {
                 Text("1")
-                Slider(value: .constant(10))
+                Slider(value: self.$sliderValue, in:1...100)
                 Text("100")
             }
             Spacer()
@@ -26,7 +27,7 @@ struct ContentView: View {
             }
             .alert(isPresented: $alertIsVisible){
                 ()->Alert
-                in return Alert(title: Text("Joke"), message: Text("Temel ucaktan atlamıs dunyayı tutturamamis"), dismissButton: .default(Text("Gapath")))
+                in return Alert(title: Text("Value"), message: Text("Slider is at \(self.sliderValue) now"), dismissButton: .default(Text("Gapath")))
             }
             Spacer()
             // Score row
