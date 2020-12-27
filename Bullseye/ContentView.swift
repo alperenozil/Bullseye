@@ -23,11 +23,11 @@ struct ContentView: View {
                 print("button pressed")
                 self.alertIsVisible=true
             }) {
-                Text("knock knock")
+                Text("Show value")
             }
             .alert(isPresented: $alertIsVisible){
                 ()->Alert
-                in return Alert(title: Text("Value"), message: Text("Slider is at \(self.sliderValue) now"), dismissButton: .default(Text("Gapath")))
+                in return Alert(title: Text("Value"), message: Text("Slider is at \(Int(self.sliderValue.rounded())) now"), dismissButton: .default(Text("Gapath")))
             }
             Spacer()
             // Score row
