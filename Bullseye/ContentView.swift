@@ -3,6 +3,8 @@ struct ContentView: View {
     @State var alertIsVisible:Bool=false
     @State var sliderValue: Double=50.0
     @State var target: Int=Int.random(in: 1...100)
+    @State var score: Int=0
+    @State var round: Int=0
     var body: some View {
         VStack {
             Spacer()
@@ -27,7 +29,11 @@ struct ContentView: View {
             }
             .alert(isPresented: $alertIsVisible){
                 ()->Alert
-                in return Alert(title: Text("Value"), message: Text("Slider is at \(Int(self.sliderValue.rounded())) now\n"+"Your score is \(self.pointsForCurrentRound())"), dismissButton: .default(Text("Gapath")))
+                in return Alert(title: Text("Value"), message: Text("Slider is at \(Int(self.sliderValue.rounded())) now\n"+"Your score is \(self.pointsForCurrentRound())"), dismissButton: .default(Text("Gapath")){
+                    self.score+=self.pointsForCurrentRound()
+                    self.target=Int.random(in: 1...100)
+                    self.round=self.round+1
+                })
             }
             Spacer()
             // Score row
@@ -36,11 +42,9 @@ struct ContentView: View {
                     Text("Start Over")
                 }
                 Spacer()
-                Text("Score: ")
-                Text("999")
+                Text("Score: \(self.score)")
                 Spacer()
-                Text("Round: ")
-                Text("999")
+                Text("Round: \(self.round)")
                 Spacer()
                 Button(action: {}){
                     Text("Info")
